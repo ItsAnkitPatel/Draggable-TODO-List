@@ -1,6 +1,20 @@
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
 const data = document.querySelector("input");
+const clearButton = document.querySelector('#clear-all')
+
+
+clearButton.addEventListener('click',clearAll);
+
+// remove all the paragraphs
+function clearAll(){
+  while(left.firstChild){
+    left.removeChild(left.firstChild)
+  }
+  while(right.firstChild){
+    right.removeChild(right.firstChild)
+  }
+}
 
 // Adding 'Enter' key as a trigger to the input field
 document.querySelector("input").addEventListener("keypress", function (event) {
@@ -15,6 +29,7 @@ document.getElementById("add-button").addEventListener("click", function () {
   }
 });
 
+//Creating elements and adding them to the left container
 function createElement(inputText) {
   data.value ='' // Reset the text field
   const div = document.createElement("div");
@@ -74,6 +89,9 @@ function editText() {
   });
 }
 
+function useLocalStorage(dataField){
+  
+}
 // IIFE
 
 (function draggableFunctionality() {
@@ -91,6 +109,7 @@ function editText() {
       left.appendChild(selected);
       selected = null;
     }
+    console.log("Dropped event launched");
   });
 
   right.addEventListener("dragstart", function (e) {
@@ -142,7 +161,7 @@ function editText() {
 
 /* 
 
-// FIXME: Below function is taken from someone else but it has some bugs do not use first use chatgpt for finding the issue
+// FIXME: Below function is taken from someone else but it has some bugs do not use it, first use chatgpt for finding the issue
 
 
 function draggableFunctionality(div) {
